@@ -1,0 +1,35 @@
+{
+  "name": "gtran-shapefile",
+  "version": "1.0.0",
+  "description": "convert geojson to shapefile and backwards",
+  "main": "src/script.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haoliangyu/gtran-shapefile.git"
+  },
+  "keywords": [
+    "geojson",
+    "shapefile"
+  ],
+  "author": "Haoliang Yu <haholiang.yu@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/haoliangyu/gtran-shapefile/issues"
+  },
+  "homepage": "https://github.com/haoliangyu/gtran-shapefile#readme",
+  "dependencies": {
+    "shapefile": "^0.3.0",
+    "shp-write": "^0.2.4"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "log4js": "^0.6.27",
+    "mocha": "^2.3.3"
+  }
+}
