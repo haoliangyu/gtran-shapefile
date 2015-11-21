@@ -23,10 +23,6 @@ describe('Shapefile module', function() {
     it('should save the geojson as a shapefile', function() {
         gtran.fromGeoJson(geojson, saveName).then(function(files) {
             expect(files.length).to.be.equal(3);
-
-            // _.forEach(files, function(file) {
-            //     if(fs.statSync(file)) { fs.unlinkSync(file); }
-            // });
         })
         .catch(function(err) {
             logger.error(err);
