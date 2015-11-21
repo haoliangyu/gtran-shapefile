@@ -1,6 +1,6 @@
 {
   "name": "gtran-shapefile",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "convert geojson to shapefile and backwards",
   "main": "src/script.js",
   "directories": {
