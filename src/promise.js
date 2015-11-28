@@ -4,7 +4,7 @@ var promiseLib;
 
 exports.set = function(lib) {
 
-    if (promiseLib) {
+    if (lib) {
         promiseLib = parsePromiseLib(lib);
     } else {
         // if not ES6, native Promise is not support
