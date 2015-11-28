@@ -19,7 +19,7 @@ describe('Shapefile module', function() {
             'properties': { 'id': 1 }
         }]
     };
-
+    gtran.setPromiseLib(require('promise'));
     it('should save the geojson as a shapefile', function() {
         gtran.fromGeoJson(geojson, saveName).then(function(files) {
             expect(files.length).to.be.equal(3);
