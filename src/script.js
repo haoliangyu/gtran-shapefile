@@ -54,8 +54,8 @@ exports.fromGeoJson = function(geojson, fileName, options) {
                 case 'MULTIPOINT':
                     geomType = 'POINT';
                     break;
-                case 'POLYLINE':
-                case 'MULTIPOLYLINE':
+                case 'LINESTRING':
+                case 'MULTILINESTRING':
                     geomType = 'POLYLINE';
                     break;
                 case 'POLYGON':
