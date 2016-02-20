@@ -29,3 +29,4 @@ node_modules
 test/result/*.shp
 test/result/*.shx
 test/result/*.dbf
+test/result/*.prj

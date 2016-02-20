@@ -1,5 +1,3 @@
-'use strict';
-
 var promiseLib = require('./promise.js');
 var fs = require('fs');
 var Promise, readShp, createShp, writeFile;
@@ -21,7 +19,7 @@ exports.toGeoJson = function(fileName, options) {
             if(err) { reject(err); }
 
             resolve(geojson);
-        })
+        });
     });
 
     return promise;
@@ -29,6 +27,11 @@ exports.toGeoJson = function(fileName, options) {
 
 exports.fromGeoJson = function(geojson, fileName, options) {
     if (!Promise) { setPromiseLib(); }
+
+    var esriWKT;
+    if (options) {
+        esriWKT = options.esriWKT;
+    }
 
     var promise = new Promise(function(resolve, reject) {
         try {
@@ -49,7 +52,7 @@ exports.fromGeoJson = function(geojson, fileName, options) {
             });
 
             var geomType;
-            switch(geojson.features[0].geometry['type'].toUpperCase()) {
+            switch(geojson.features[0].geometry.type.toUpperCase()) {
                 case 'POINT':
                 case 'MULTIPOINT':
                     geomType = 'POINT';
@@ -82,6 +85,10 @@ exports.fromGeoJson = function(geojson, fileName, options) {
                                 writeFile(fileNameWithoutExt + '.dbf', toBuffer(files.dbf.buffer))
                             ];
 
+                            if (esriWKT) {
+                                writeTasks.push(writeFile(fileNameWithoutExt + '.prj', esriWKT));
+                            }
+
                             return Promise.all(writeTasks)
                                 .then(function() {
                                     resolve([
@@ -91,11 +98,17 @@ exports.fromGeoJson = function(geojson, fileName, options) {
                                     ]);
                                 });
                         } else {
-                            resolve([
+                            var fileData = [
                                 { data: toBuffer(files.shp.buffer), format: 'shp' },
                                 { data: toBuffer(files.shx.buffer), format: 'shx'},
                                 { data: toBuffer(files.dbf.buffer), format: 'dbf'}
-                            ]);
+                            ];
+
+                            if (esriWKT) {
+                                fileData.push({ data: esriWKT, format: 'prj'});
+                            }
+
+                            resolve(fileData);
                         }
                    });
 
@@ -105,7 +118,7 @@ exports.fromGeoJson = function(geojson, fileName, options) {
     });
 
     return promise;
-}
+};
 
 function toBuffer(ab) {
     var buffer = new Buffer(ab.byteLength),

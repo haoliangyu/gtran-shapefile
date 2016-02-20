@@ -30,6 +30,7 @@
   "devDependencies": {
     "chai": "^3.4.1",
     "log4js": "^0.6.27",
-    "mocha": "^2.3.3"
+    "mocha": "^2.3.3",
+    "promise": "^7.1.1"
   }
 }

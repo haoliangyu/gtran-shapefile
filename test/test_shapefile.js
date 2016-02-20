@@ -19,15 +19,20 @@ describe('Shapefile module', function() {
             'properties': { 'id': 1 }
         }]
     };
+
     gtran.setPromiseLib(require('promise'));
+
     it('should save the geojson as a shapefile', function() {
-        gtran.fromGeoJson(geojson, saveName).then(function(files) {
+        gtran.fromGeoJson(geojson, saveName, {
+            // WGS84
+            esriWKT: 'GEOGCS["GCS_WGS_1984",DATUM["D_WGS_1984",SPHEROID["WGS_1984",6378137,298.257223563]],PRIMEM["Greenwich",0],UNIT["Degree",0.017453292519943295]]'
+        }).then(function(files) {
             expect(files.length).to.be.equal(3);
         })
         .catch(function(err) {
             logger.error(err);
         });
-    })
+    });
 
     it('should read the shapefile and return a geojson', function() {
         gtran.toGeoJson(testData).then(function(geojson) {

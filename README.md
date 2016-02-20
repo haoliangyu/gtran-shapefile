@@ -13,9 +13,14 @@ npm install gtran-shapefile
 
     Specify the promise library. If not, the library will use the native Promise.
 
-* **fromGeoJson(geojson, fileName)**
+* **fromGeoJson(geojson, fileName, options)**
 
     Save the geojson into the given file name.
+
+    Options:
+
+    * **esriWKT**: ESRI WTK string that specifies the shapefile's spatial reference and generates .prj file. It could be found at [SpatialReference.org](http://spatialreference.org/).
+
 
 * **toGeoJson(fileName)**
 
@@ -36,7 +41,10 @@ shp.toGeoJson('source.shp')
 });
 
 // Save geojson into shapefile
-shp.fromGeoJson(geojson, 'point.shp')
+shp.fromGeoJson(geojson, 'point.shp', {
+  // ESRI WKT string of WGS84
+  esriWKT: 'GEOGCS["GCS_WGS_1984",DATUM["D_WGS_1984",SPHEROID["WGS_1984",6378137,298.257223563]],PRIMEM["Greenwich",0],UNIT["Degree",0.017453292519943295]]'
+})
 .then(function(fileNames) {
     console.log('files have been saved at:' + fileNames);
 });
