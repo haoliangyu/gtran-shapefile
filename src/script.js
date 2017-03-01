@@ -1,32 +1,16 @@
 var promiseLib = require('./promise.js');
 var fs = require('fs');
 var writeShp = require('shp-write').write;
-var readShp = require('shapefile').read;
+var shapefile = require('shapefile');
 var Promise, writeFile;
 
 exports.setPromiseLib = setPromiseLib;
 
 exports.toGeoJson = function(fileName, options) {
     if (!Promise) { setPromiseLib(); }
+    if(!fs.statSync(fileName)) { reject(new Error('Given shapefile does not exist.')); }
 
-    var promise = new Promise(function(resolve, rejiect) {
-        if(!fs.statSync(fileName)) { reject(new Error('Given shapefile does not exist.')); }
-
-        var fileNameWithoutExt = fileName;
-        if(fileNameWithoutExt.indexOf('.shp') !== -1) {
-            fileNameWithoutExt = fileNameWithoutExt.replace('.shp', '');
-        }
-
-        readShp(fileNameWithoutExt, function(err, geojson) {
-            if(err) {
-                reject(err);
-            } else {
-                resolve(geojson);
-            }
-        });
-    });
-
-    return promise;
+    return shapefile.read(fileName);
 };
 
 exports.fromGeoJson = function(geojson, fileName, options) {
