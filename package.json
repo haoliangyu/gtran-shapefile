@@ -25,7 +25,7 @@
   "homepage": "https://github.com/haoliangyu/gtran-shapefile#readme",
   "dependencies": {
     "shapefile": "^0.6.2",
-    "shp-write": "0.2.6"
+    "shp-write": "0.3.2"
   },
   "devDependencies": {
     "chai": "^3.5.0",
