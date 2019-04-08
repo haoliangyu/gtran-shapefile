@@ -24,14 +24,14 @@
   },
   "homepage": "https://github.com/haoliangyu/gtran-shapefile#readme",
   "dependencies": {
-    "shapefile": "^0.6.2",
+    "shapefile": "^0.6.6",
     "shp-write": "0.3.2"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "chai-as-promised": "^6.0.0",
-    "log4js": "^1.1.0",
-    "mocha": "^3.2.0",
-    "promise": "^7.1.1"
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "log4js": "^4.1.0",
+    "mocha": "^6.1.1",
+    "promise": "^8.0.3"
   }
 }
