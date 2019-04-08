@@ -1,6 +1,6 @@
 # gtran-shapefile
 
-[![Build Status](https://travis-ci.org/haoliangyu/gtran-shapefile.svg?branch=master)](https://travis-ci.org/haoliangyu/gtran-shapefile)
+[![NPM Version](https://img.shields.io/npm/v/gtran-shapefile.svg)](https://www.npmjs.com/package/gtran-shapefile) [![Build Status](https://travis-ci.org/haoliangyu/gtran-shapefile.svg?branch=master)](https://travis-ci.org/haoliangyu/gtran-shapefile)
 
 convert geojson to shapefile and backwards
 
