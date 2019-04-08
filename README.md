@@ -1,4 +1,7 @@
 # gtran-shapefile
+
+[![Build Status](https://travis-ci.org/haoliangyu/gtran-shapefile.svg?branch=master)](https://travis-ci.org/haoliangyu/gtran-shapefile)
+
 convert geojson to shapefile and backwards
 
 ## Installation
