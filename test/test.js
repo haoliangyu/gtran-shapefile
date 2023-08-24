@@ -1,5 +1,4 @@
 var gtran = require('../src/script.js');
-var fs = require('fs');
 var logger = require('log4js').getLogger();
 
 var chai = require('chai').use(require('chai-as-promised'));

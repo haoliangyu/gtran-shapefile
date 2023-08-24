@@ -1,6 +1,6 @@
 var promiseLib = require('./promise.js');
 var fs = require('fs');
-var writeShp = require('shp-write').write;
+var writeShp = require('@mapbox/shp-write').write;
 var shapefile = require('shapefile');
 var Promise, writeFile;
 
@@ -110,7 +110,7 @@ exports.fromGeoJson = function(geojson, fileName, options) {
 };
 
 function toBuffer(ab) {
-    var buffer = new Buffer(ab.byteLength),
+    var buffer = Buffer.alloc(ab.byteLength),
         view = new Uint8Array(ab);
     for (var i = 0; i < buffer.length; ++i) { buffer[i] = view[i]; }
     return buffer;
